@@ -425,6 +425,25 @@ RSpec.describe SEPA::CreditTransfer do
           expect(subject.to_xml(SEPA::PAIN_001_003_03)).to validate_against('pain.001.003.03.xsd')
         end
       end
+
+      context 'with a transaction with other instead of iban' do
+        subject do
+          sct = credit_transfer
+
+          sct.add_transaction(
+            name: 'Telekomiker AG',
+            bic: 'PBNKDEFF370',
+            other: '37112589611964645802',
+            amount: 102.50
+          )
+
+          sct
+        end
+
+        it 'should validate against pain.001.001.03' do
+          expect(subject.to_xml('pain.001.001.03')).to validate_against('pain.001.001.03.xsd')
+        end
+      end
     end
 
     context 'xml_schema_header' do
