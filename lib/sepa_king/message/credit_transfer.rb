@@ -131,7 +131,13 @@ module SEPA
         end
         builder.CdtrAcct do
           builder.Id do
-            builder.IBAN(transaction.iban)
+            if transaction.iban
+              builder.IBAN(transaction.iban)
+            else
+              builder.Othr do
+                builder.Id(transaction.other)
+              end
+            end
           end
         end
         if transaction.remittance_information
