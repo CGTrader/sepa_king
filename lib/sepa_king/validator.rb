@@ -9,7 +9,6 @@ module SEPA
       value = record.send(field_name).to_s
 
       if value.present?
-        puts record
         unless IBANTools::IBAN.valid?(value) && value.match?(REGEX)
           record.errors.add(field_name, :invalid, message: options[:message])
         end
