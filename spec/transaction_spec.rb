@@ -78,7 +78,7 @@ RSpec.describe SEPA::Transaction do
     end
 
     it 'should not accept invalid value' do
-      expect(SEPA::Transaction).not_to accept(nil, '', 'invalid', for: :iban)
+      expect(SEPA::Transaction).not_to accept('invalid', for: :iban)
     end
   end
 
