@@ -613,6 +613,12 @@
 			<xs:maxLength value="70"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="Max105Text">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="105"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:complexType name="NameAndAddress10">
 		<xs:sequence>
 			<xs:element name="Nm" type="Max140Text"/>
@@ -803,7 +809,7 @@
 			<xs:element name="TwnNm" type="Max35Text" minOccurs="0"/>
 			<xs:element name="CtrySubDvsn" type="Max35Text" minOccurs="0"/>
 			<xs:element name="Ctry" type="CountryCode" minOccurs="0"/>
-			<xs:element name="AdrLine" type="Max70Text" minOccurs="0" maxOccurs="2"/>
+			<xs:element name="AdrLine" type="Max105Text" minOccurs="0" maxOccurs="2"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:simpleType name="Priority2Code">
